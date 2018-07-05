@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="utf-8"/>
+
+</head>
+<body>
+
+	<h3>LISTA DE PERFIS</h3>
+	
+	<table>
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Nome</th>
+				<th>Nível</th>
+				<th>Opções</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="perfil: ${perfis}">
+				<td><span th:text="${perfil.id}"></span></td>
+				<td>
+					<a th:href="${ (#mvc.url('PC#editarPerfil').arg(0, perfil.id)).build() }">
+						<span th:text="${perfil.nome}"></span>
+					</a>
+				</td>
+				<td><span th:text="${perfil.nivel}"></span></td>
+				<td><a th:href="${ (#mvc.url('PC#remover').arg(0, perfil.id)).build() }">Remover</a></td>
+			</tr>
+		</tbody>
+	</table>
+	
+	<hr>
+	<a href="/">Home</a>
+</body>
+</html>

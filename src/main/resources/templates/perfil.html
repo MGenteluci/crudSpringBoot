@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="utf-8"/>
+
+</head>
+<body>
+
+	<h3>CADASTRO DE PERFIS</h3>
+
+	<form method="POST" action="/perfil">
+		<input type="hidden" name="id" th:value="${perfil.id}" th:if="${perfil != null}"/>
+		
+		Nome: <input type="text" name="nome" th:value="${perfil.nome}" th:if="${ perfil != null }"/> 
+			  <input type="text" name="nome" th:if="${ perfil == null }"/>
+		<br/>
+		Nível: <input type="text" name="nivel" th:value="${perfil.nivel}" th:if="${ perfil != null }"/>
+			   <input type="text" name="nivel" th:if="${ perfil == null }"/>
+		<br/>
+		
+		<button type="submit">Salvar</button>
+	</form>
+
+	<hr>
+	<a href="/">Home</a>
+</body>
+</html>

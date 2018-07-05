@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="utf-8"/>
+
+</head>
+<body>
+
+	<h3>LISTA DE USUÁRIOS</h3>
+	
+	<table>
+		<thead>
+			<tr>
+				<th>Nome</th>
+				<th>Email</th>
+				<th>Perfil</th>
+				<th>Opções</th>
+			</tr>
+		</thead>
+		<tbody>
+			 <tr th:each="usuario: ${usuarios}">
+				<td>
+					<a>
+						<span th:text="${usuario.nome}"></span>
+					</a>
+				</td>
+				<td><span th:text="${usuario.email}"></span></td>
+				<td><span th:text="${usuario.perfil.nome}"></span></td>
+				<td>
+					<a th:href="${ (#mvc.url('UC#deletar').arg(0, usuario.id)).build() }">Remover</a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	
+	<hr>
+	<a href="/">Home</a>
+</body>
+</html>
